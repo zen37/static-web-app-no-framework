@@ -50,16 +50,3 @@ jobs:
       with: 
         name: onDemand
         path: pw-report/
-
-     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Notify docusaurus repo
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          gh api repos/mspnp/intern-js-pipeline/dispatches \
-              --raw-field event_type=rebuild-site
